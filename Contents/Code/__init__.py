@@ -1,5 +1,3 @@
-# Vidrip
-
 from PMS import *
 
 
@@ -11,6 +9,7 @@ def Start():
 	
 	
 ####################################################################################################
+@handler("/applications/microshutdown", "Turn off Media Server")
 def MainMenu():
 	dir = MediaContainer(title1="Turn Off Media Server")
 	dir.Append(Function(DirectoryItem(ShutDown, title="Shutdown")))
