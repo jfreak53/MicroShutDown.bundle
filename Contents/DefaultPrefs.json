@@ -1,0 +1,9 @@
+[
+	{   
+		"id":           "system",
+		"label":        "Operating System",
+		"type":         "enum",
+		"values":       ["Linux", "Windows"],
+		"default":      "Linux",
+	}
+]
