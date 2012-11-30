@@ -13,7 +13,7 @@ def Start():
 ####################################################################################################
 def MainMenu():
 	dir = MediaContainer(title1="Turn Off Media Server")
-	dir.Append(Function(DirectoryItem(EjectDisc, title="Shutdown")))
+	dir.Append(Function(DirectoryItem(ShutDown, title="Shutdown")))
 	dir.Append(PrefsItem(title="Settings"))
 	return dir
 
