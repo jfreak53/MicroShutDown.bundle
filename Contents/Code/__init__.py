@@ -1,7 +1,4 @@
 import os
-from PMS import *
-from PMS.Objects import *
-from PMS.Shortcuts import *
 
 ICON = 'icon-default.png'
 
