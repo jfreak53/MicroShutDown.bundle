@@ -4,6 +4,6 @@
 		"label":        "Operating System",
 		"type":         "enum",
 		"values":       ["Linux", "Windows"],
-		"default":      "Linux",
+		"default":      "Linux"
 	}
 ]

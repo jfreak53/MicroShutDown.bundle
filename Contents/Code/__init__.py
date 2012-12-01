@@ -7,7 +7,7 @@ ICON = 'icon-default.png'
 
 ####################################################################################################
 def Start():
-	Plugin.AddPrefixHandler("/applications/microshutdown", MainMenu, "Turn off Server", ICON)
+	Plugin.AddPrefixHandler("/video/microshutdown", MainMenu, "Turn off Server", ICON)
 	Plugin.AddViewGroup('List', viewMode='List', mediaType='items')
 
 	MediaContainer.thumb = R(ICON)
@@ -15,10 +15,9 @@ def Start():
 	
 	
 ####################################################################################################
-#@handler("/applications/microshutdown", "Turn off Media Server")
 def MainMenu():
 	dir = MediaContainer(viewGroup="List")
-	dir.Append(Function(DirectoryItem(ShutDown, "Shutdown", subtitle="mime", thumb=R(ICON))))
+	dir.Append(Function(DirectoryItem(ShutDown, "Shutdown", subtitle="Shutdown the Server Now", thumb=R(ICON))))
 	dir.Append(PrefsItem(title="Settings"))
 	return dir
 
@@ -26,7 +25,6 @@ def MainMenu():
 	
 def ShutDown(sender):
 
-	#command = "shutdown.sh"
-	#Helper.Run(command)
 	os.system("sudo shutdown -h now")
-	return "Done"
+	#os.system("shutdown /s /t 0")
+	return MessageContainer("MicroShutDown", "Shutdown command executed, Goodbye.")
