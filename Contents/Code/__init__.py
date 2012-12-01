@@ -1,18 +1,24 @@
+import os
 from PMS import *
+from PMS.Objects import *
+from PMS.Shortcuts import *
 
-
+ICON = 'icon-default.png'
 
 ####################################################################################################
 def Start():
-	MediaContainer.thumb = R("icon-default.png")
-	DirectoryItem.thumb = R("icon-default.png")
+	Plugin.AddPrefixHandler("/applications/microshutdown", MainMenu, "Turn off Server", ICON)
+	Plugin.AddViewGroup('List', viewMode='List', mediaType='items')
+
+	MediaContainer.thumb = R(ICON)
+	DirectoryItem.thumb = R(ICON)
 	
 	
 ####################################################################################################
-@handler("/applications/microshutdown", "Turn off Media Server")
+#@handler("/applications/microshutdown", "Turn off Media Server")
 def MainMenu():
-	dir = MediaContainer(title1="Turn Off Media Server")
-	dir.Append(Function(DirectoryItem(ShutDown, title="Shutdown")))
+	dir = MediaContainer(viewGroup="List")
+	dir.Append(Function(DirectoryItem(ShutDown, "Shutdown", subtitle="mime", thumb=R(ICON))))
 	dir.Append(PrefsItem(title="Settings"))
 	return dir
 
@@ -20,7 +26,7 @@ def MainMenu():
 	
 def ShutDown(sender):
 
-	command = "shutdown.sh"
-	Helper.Run(command)
-	return
-			
+	#command = "shutdown.sh"
+	#Helper.Run(command)
+	os.system("sudo shutdown -h now")
+	return "Done"
